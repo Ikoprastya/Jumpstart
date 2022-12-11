@@ -11,16 +11,7 @@
           <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
             <ul class="flex flex-col mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
               <li>
-                <a href="{{ ('/') }}" class=" text-white block py-2 pl-3 pr-4  rounded md:bg-transparen md:p-0 md:dark:text-white dark:bg-yellow-600 md:dark:bg-transparent" aria-current="page">Home</a>
-              </li>
-              <li>
-                <a href="#" class=" text-white block py-2 pl-3 pr-4  rounded hover:bg-white-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-500 md:p-0 dark:text-white-400 md:dark:hover:text-white dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent">About Us</a>
-              </li>
-              <li>
-                <a href="#" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-white-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-500 md:p-0 dark:text-white-400 md:dark:hover:text-white dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact Us</a>
-              </li>
-              <li>
-                <a href="#" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-white-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-500 md:p-0 dark:text-white-400 md:dark:hover:text-white dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent">Term</a>
+                <a href="{{ ('/') }}" class=" text-white block py-2 pl-3 pr-4  rounded md:bg-transparen md:p-0 md:dark:text-white md:hover:text-yellow-500 dark:bg-yellow-600 md:dark:bg-transparent" aria-current="page">Home</a>
               </li>
               <li>
                 <a href="#" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-white-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-500 md:p-0 dark:text-white-400 md:dark:hover:text-white dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent">Product</a>
