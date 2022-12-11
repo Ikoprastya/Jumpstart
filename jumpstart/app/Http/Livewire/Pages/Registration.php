@@ -8,6 +8,6 @@ class Registration extends Component
 {
     public function render()
     {
-        return view('livewire.pages.registration');
+        return view('livewire.pages.registration')->layout('layouts.base', ['title' => 'Jumpstart - Registration']);
     }
 }

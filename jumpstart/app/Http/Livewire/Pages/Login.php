@@ -8,6 +8,6 @@ class Login extends Component
 {
     public function render()
     {
-        return view('livewire.pages.login');
+        return view('livewire.pages.login')->layout('layouts.base', ['title' => 'Jumpstart - Login']);
     }
 }
