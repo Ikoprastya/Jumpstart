@@ -8,6 +8,6 @@ class ManageProduct extends Component
 {
     public function render()
     {
-        return view('livewire.pages.admin.manage-product');
+        return view('livewire.pages.admin.manage-product')->layout('layouts.base', ['title' => 'Jumpstart - Manage Product']);
     }
 }
