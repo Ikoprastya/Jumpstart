@@ -8,6 +8,6 @@ class Product extends Component
 {
     public function render()
     {
-        return view('livewire.pages.product');
+        return view('livewire.pages.product')->layout('layouts.base', ['title' => 'Jumpstart - Product']);
     }
 }

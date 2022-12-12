@@ -1,13 +1,13 @@
 <div>
     <section class="bg-gray-50 dark:bg-gray-900  ">
-        <div class="px-6 lg:px-8 bg-image " 
+        <div class="px-6 lg:px-8 bg-image bg-gray-100 shadow-[0px_30px_10px_20px_rgba(0,0,0,0.3)] z-[10]" 
             style="
                 background-image: url('/images/sky.jpg');
                 position: static; 
                 height: 150px;
-            ">            
+            ">          
         </div>
-        <div class="bg-white h-72"></div>
+        <div class="bg-white h-72 "></div>
         <div class=" absolute top-96 w-full left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
             <div class="w-full bg-white rounded-xl shadow-2xl dark:border md:mt-0 sm:max-w-xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">

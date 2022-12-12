@@ -1,5 +1,5 @@
-<div >
-    <nav class="p-3 border-gray-200 bg-gray-800 dark:bg-gray-800 dark:border-gray-500 ">
+<div>
+    <nav class="p-3 border-gray-200 bg-gray-800 dark:bg-gray-800 dark:border-gray-500  ">
         <div class="container flex flex-wrap items-center justify-between mx-auto">
           <a href="#" class="flex items-center">
               <img src="{{ asset('/images/logo-company.png') }}" class="h-3 mr-3 sm:h-20" alt="Flowbite Logo" />
@@ -14,7 +14,7 @@
                 <a href="{{ ('/') }}" class=" text-white block py-2 pl-3 pr-4  rounded md:bg-transparen md:p-0 md:dark:text-white md:hover:text-yellow-500 dark:bg-yellow-600 md:dark:bg-transparent" aria-current="page">Home</a>
               </li>
               <li>
-                <a href="#" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-white-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-500 md:p-0 dark:text-white-400 md:dark:hover:text-white dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent">Product</a>
+                <a href="{{ ('/product') }}" class="block py-2 pl-3 pr-4 text-white rounded hover:bg-white-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-500 md:p-0 dark:text-white-400 md:dark:hover:text-white dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent">Product</a>
               </li>
               <li>
                 <a href="{{ url('/login') }}" class=" text-white block py-2 pl-3 pr-4  rounded hover:bg-white-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-500 md:p-0 dark:text-white-400 md:dark:hover:text-white dark:hover:bg-white-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
