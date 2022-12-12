@@ -57,16 +57,16 @@
                     <div class="">
                         <label for="large" class="block mb-4 text-2xl font-extrabold text-orange-400 dark:text-white">Summary</label>
                         <div class="">
-                            <div class="mb-3  text-sm font-medium border-b-2 border-gray-300 mr-64 py-4">
+                            <div class="mb-3 w-full text-sm font-medium border-b-2 border-gray-300 mr-64 py-4">
                                 <input class="w-4 " value="10" /> <span > items purchased</span>
                             </div>
-                            <div class="mb-3 text-sm font-medium border-b-2 border-gray-300 mr-64 pb-4">
+                            <div class="mb-3 w-full  text-sm font-medium border-b-2 border-gray-300 mr-64 pb-4">
                                 <label for="delivery" class="block  text-lg font-medium text-gray-900 dark:text-white">Delivery Destination</label>
                                 <div class="text-green-500">
                                     <input class="w-4 " value="2" name="delivery" /> <span > day by JNE</span>
                                 </div>
                             </div>
-                            <div class="mb-3 text-sm font-medium  mr-64 pb-4">
+                            <div class="mb-3 w-full text-sm font-medium  mr-64 pb-4">
                                 <label for="payment" class="block  text-lg font-medium text-gray-900 dark:text-white">Payment method</label>
                                 <div class="text-green-500">
                                     <input class="w-full " value="Bank Transfer" name="payment" />
@@ -89,10 +89,10 @@
                             </div>
                         </div>
                         <div class="mt-4">
-                            <div class=" w-full text-lg font-semibold mb-3">
-                                <div class="flex  w-full justify-between text-gray-900 ">
-                                    <label for="total" class="block mb-4 text-3xl font-extrabold text-orange-400 dark:text-white ">Total</label>
-                                    <input class="text-end  text-3xl font-extrabold" value="500.000" name="total" /> 
+                            <div class=" text-lg font-semibold mb-3">
+                                <div class="flex text-gray-900 ">
+                                    <label for="total" class="block w-[50%]  text-3xl font-extrabold text-orange-400 dark:text-white ">Total</label>
+                                    <input class="text-end w-[50%] text-3xl font-extrabold" value="500.000" name="total" /> 
                                 </div>
                             </div>
                         </div>

@@ -7,7 +7,9 @@ use App\Http\Livewire\Pages\Order\SuccessOrder;
 use App\Http\Livewire\Pages\Product;
 use App\Http\Livewire\Pages\Product\ProductDetail;
 use App\Http\Livewire\Pages\Registration;
+use App\Http\Livewire\Pages\User\ChangePassword;
 use App\Http\Livewire\Pages\User\UserDetail;
+use App\Http\Livewire\Pages\User\UserProfile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,8 @@ Route::get('/signup', Registration::class)->name('registration');
 Route::get('/product', Product::class)->name('product');
 Route::get('/product/detail', ProductDetail::class)->name('product.detail');
 
+Route::get('/user/profile', UserProfile::class)->name('user.profile');
+Route::get('/user/changepassword', ChangePassword::class)->name('user.changepassword');
 Route::get('/user/detail', UserDetail::class)->name('user.detail');
 
 Route::get('/order/detail', OrderDetail::class)->name('order.detail');

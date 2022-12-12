@@ -8,6 +8,6 @@ class UserProfile extends Component
 {
     public function render()
     {
-        return view('livewire.pages.user.user-profile');
+        return view('livewire.pages.user.user-profile')->layout('layouts.base', ['title' => 'Jumpstart - User Profile']);
     }
 }

@@ -18,7 +18,7 @@
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias possimus facilis quae quis illum debitis voluptatibus sapiente aliquam, voluptates, dolorum at commodi nesciunt. Excepturi aperiam ad minus harum, libero perferendis?
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias possimus facilis quae quis illum debitis voluptatibus sapiente aliquam, voluptates, dolorum at commodi nesciunt. Excepturi aperiam ad minus harum, libero perferendis?
                 </div>
-                <div class="w-[40%] px-28">
+                <div class="w-[40%] px-10">
                     <img src="{{ asset('images/profile.jpg') }}" alt="product" class=" rounded-xl h-96 w-screen shadow-2xl">
                 </div>
             </div>
