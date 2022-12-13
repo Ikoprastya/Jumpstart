@@ -8,6 +8,6 @@ class UserDetail extends Component
 {
     public function render()
     {
-        return view('livewire.pages.user.user-detail')->layout('layouts.base', ['title' => 'Jumpstart - Product Detail']);
+        return view('livewire.pages.user.user-detail')->layout('layouts.base', ['title' => 'Jumpstart - User Detail']);
     }
 }

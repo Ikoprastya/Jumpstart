@@ -17,7 +17,10 @@
                             Name Product
                         </h6>
                         <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                        <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
+                        <div class="flex w-full justify-end">
+                            <a href="{{ url('/user/chart') }}" class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+
+                        </div>
                     </div>
 
                     <div class="shadow-lg pb-4 bg-white rounded-xl ">
@@ -28,7 +31,10 @@
                             Name Product
                         </h6>
                         <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                        <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
+                       <div class="flex w-full justify-end">
+                            <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+
+                        </div>
                     </div>
 
                     <div class="shadow-lg pb-4 bg-white rounded-xl  ">
@@ -39,7 +45,10 @@
                             Name Product
                         </h6>
                         <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                        <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
+                       <div class="flex w-full justify-end">
+                            <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+
+                        </div>
                     </div>
 
                     <div class="shadow-lg pb-4 bg-white rounded-xl   ">
@@ -50,7 +59,10 @@
                             Name Product
                         </h6>
                         <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                        <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
+                       <div class="flex w-full justify-end">
+                            <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+
+                        </div>
                     </div>
 
                     <div class="shadow-lg pb-4 bg-white rounded-xl ">
@@ -61,7 +73,10 @@
                             Name Product
                         </h6>
                         <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                        <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
+                       <div class="flex w-full justify-end">
+                            <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+
+                        </div>
                     </div>
 
                     <div class="shadow-lg pb-4 bg-white rounded-xl ">
@@ -72,7 +87,10 @@
                             Name Product
                         </h6>
                         <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                        <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
+                       <div class="flex w-full justify-end">
+                            <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+
+                        </div>
                     </div>
                     
                     <div class="shadow-lg pb-4 bg-white rounded-xl  ">
@@ -83,7 +101,10 @@
                             Name Product
                         </h6>
                         <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                        <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
+                       <div class="flex w-full justify-end">
+                            <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+
+                        </div>
                     </div>
 
                 </div>

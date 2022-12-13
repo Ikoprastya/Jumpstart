@@ -8,6 +8,6 @@ class ManageUser extends Component
 {
     public function render()
     {
-        return view('livewire.pages.admin.manage-user');
+        return view('livewire.pages.admin.manage-user')->layout('layouts.base', ['title' => 'Jumpstart - Manage User']);
     }
 }

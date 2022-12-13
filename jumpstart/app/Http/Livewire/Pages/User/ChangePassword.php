@@ -8,6 +8,6 @@ class ChangePassword extends Component
 {
     public function render()
     {
-        return view('livewire.pages.user.change-password');
+        return view('livewire.pages.user.change-password')->layout('layouts.base', ['title' => 'Jumpstart - User Change Password']);
     }
 }
