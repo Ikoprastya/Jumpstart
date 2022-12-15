@@ -29,6 +29,7 @@
     <div>
         <div class="mt-10">
                 
+                    
                 <div class="w-full shadow-2xl mb-16 rounded-b-md">
                     <div class="bg-gray-200 rounded-t-md w-full border-2 border-gray-300  flex justify-between px-5 items-center">
                         <div>
@@ -67,6 +68,10 @@
                     </div>
                 </div>
 
+              
+
+                
+
                 <div class="w-full shadow-2xl rounded-b-md">
                     <div class="bg-gray-200 rounded-t-md w-full border-2 border-gray-300  flex justify-between px-5 items-center">
                         <div>
@@ -97,86 +102,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td class="py-4 px-6">
-                                            1
-                                        </td>
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>20.000</span>
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            15
-                                        </td>
-                                        <td class="py-4 px-6 text-green-500 font-semibold flex flex-col">
-                                            <!-- Modal toggle -->
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-green-600 dark:text-green-500 hover:underline">Detail user</a>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td class="py-4 px-6">
-                                            1
-                                        </td>
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>20.000</span>
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            15
-                                        </td>
-                                        <td class="py-4 px-6 text-green-500 font-semibold flex flex-col">
-                                            <!-- Modal toggle -->
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-green-600 dark:text-green-500 hover:underline">Detail user</a>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td class="py-4 px-6">
-                                            1
-                                        </td>
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>20.000</span>
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            15
-                                        </td>
-                                        <td class="py-4 px-6 text-green-500 font-semibold flex flex-col">
-                                            <!-- Modal toggle -->
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-green-600 dark:text-green-500 hover:underline">Detail user</a>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td class="py-4 px-6">
-                                            1
-                                        </td>
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>20.000</span>
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            15
-                                        </td>
-                                        <td class="py-4 px-6 text-green-500 font-semibold flex flex-col">
-                                            <!-- Modal toggle -->
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-green-600 dark:text-green-500 hover:underline">Detail user</a>
-                                        </td>
-                                    </tr>
+                                    
+                                    @foreach ($products -> index as $product)
+
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <td class="py-4 px-6">
+                                                {{index +1}}
+                                            </td>
+                                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Apple MacBook Pro 17"
+                                            </th>
+                                            <td class="py-4 px-6">
+                                                Rp. <span>20.000</span>
+                                            </td>
+                                            <td class="py-4 px-6 ">
+                                                15
+                                            </td>
+                                            <td class="py-4 px-6 text-green-500 font-semibold flex flex-col">
+                                                <!-- Modal toggle -->
+                                                <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                                                <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
+                                                <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-green-600 dark:text-green-500 hover:underline">Detail user</a>
+                                            </td>
+                                        </tr>
+
+                                    @endforeach
+                                   
                                 </tbody>
                             </table>
                         </div>

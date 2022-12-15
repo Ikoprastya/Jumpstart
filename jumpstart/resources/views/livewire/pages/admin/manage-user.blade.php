@@ -54,126 +54,37 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($users as $user)
+                                    
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"> 
                                         
-                                        <span class=" pl-3text-base font-semibold">Neil Sims</span>
+                                        <span class=" pl-3text-base font-semibold">{{ $user->name }}</span>
                                      
                                     </th>
                                     <td class="py-4 px-6">
-                                        <span class="font-normal text-gray-500">neil.sims@flowbite.com</span>
+                                        <span class="font-normal text-gray-500">{{ $user->email }}</span>
                                     </td>
                                     <td class="py-4 px-6">
                                         <span class="flex items-center">
-                                            Admin
+                                            {{ $user->roles }}
                                        </span>
                                     </td>
                                     <td class="py-4 px-6 flex flex-col">
-                                        <!-- Modal toggle -->
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
+                                        @if ($user->roles == 'USER')
+                                            <!-- Modal toggle -->
+                                            <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                                            <a wire:click.prevent="destroy({{ $user->id }})" type="button" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
+                                            
+                                        @else
+
+                                            No Action
+
+                                        @endif
                                     </td>
                                 </tr>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"> 
-                                        
-                                        <span class=" pl-3text-base font-semibold">Neil Sims</span>
-                                     
-                                    </th>
-                                    <td class="py-4 px-6">
-                                        <span class="font-normal text-gray-500">neil.sims@flowbite.com</span>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <span class="flex items-center">
-                                            Admin
-                                       </span>
-                                    </td>
-                                    <td class="py-4 px-6 flex flex-col">
-                                        <!-- Modal toggle -->
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"> 
-                                        
-                                        <span class=" pl-3text-base font-semibold">Neil Sims</span>
-                                     
-                                    </th>
-                                    <td class="py-4 px-6">
-                                        <span class="font-normal text-gray-500">neil.sims@flowbite.com</span>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <span class="flex items-center">
-                                            Admin
-                                       </span>
-                                    </td>
-                                    <td class="py-4 px-6 flex flex-col">
-                                        <!-- Modal toggle -->
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"> 
-                                        
-                                        <span class=" pl-3text-base font-semibold">Neil Sims</span>
-                                     
-                                    </th>
-                                    <td class="py-4 px-6">
-                                        <span class="font-normal text-gray-500">neil.sims@flowbite.com</span>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <span class="flex items-center">
-                                            Admin
-                                       </span>
-                                    </td>
-                                    <td class="py-4 px-6 flex flex-col">
-                                        <!-- Modal toggle -->
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"> 
-                                        
-                                        <span class=" pl-3text-base font-semibold">Neil Sims</span>
-                                     
-                                    </th>
-                                    <td class="py-4 px-6">
-                                        <span class="font-normal text-gray-500">neil.sims@flowbite.com</span>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <span class="flex items-center">
-                                            Admin
-                                       </span>
-                                    </td>
-                                    <td class="py-4 px-6 flex flex-col">
-                                        <!-- Modal toggle -->
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <th scope="row" class="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap dark:text-white"> 
-                                        
-                                        <span class=" pl-3text-base font-semibold">Neil Sims</span>
-                                     
-                                    </th>
-                                    <td class="py-4 px-6">
-                                        <span class="font-normal text-gray-500">neil.sims@flowbite.com</span>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <span class="flex items-center">
-                                            Admin
-                                       </span>
-                                    </td>
-                                    <td class="py-4 px-6 flex flex-col">
-                                        <!-- Modal toggle -->
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                                        <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete user</a>
-                                    </td>
-                                </tr>
+                                @endforeach
+                                
                             </tbody>
                         </table>
                         <!-- Edit user modal -->
