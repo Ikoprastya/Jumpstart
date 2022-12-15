@@ -17,14 +17,15 @@ class Registration extends Component
         $this->validate([
             'name'      => 'required',
             'email'     => 'required|email|unique:users',
-            'password'  => 'required|confirmed',
+            'password'  => 'required',
             'confirm_password'  => 'required|same:password'
         ]);
 
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => $this->bcrypt($this->password)
+            'password' => bcrypt($this->password),
+            'roles' => 'USER'
         ]);
 
         if ($user) {

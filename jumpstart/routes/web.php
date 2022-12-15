@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Component\Header;
 use App\Http\Livewire\Pages\Admin\ManageProduct;
 use App\Http\Livewire\Pages\Admin\ManageTransaction;
 use App\Http\Livewire\Pages\Admin\ManageUser;
@@ -30,6 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/login', Login::class)->name('login');
+Route::get('/logout', [Header::class, 'logOut'])->name('logout');
 Route::get('/signup', Registration::class)->name('registration');
 
 Route::get('/product', Product::class)->name('product');
@@ -43,6 +45,6 @@ Route::get('/user/chart', ChartUser::class)->name('user.chart');
 Route::get('/order/detail', OrderDetail::class)->name('order.detail');
 Route::get('/order/success', SuccessOrder::class)->name('order.seccess');
 
-Route::get('/admin/manage/user', ManageUser::class)->name('admin.manage.user');
+Route::get('/admin/manage/user', ManageUser::class)->name('admin.manage.user')->middleware('roles:USER');
 Route::get('/admin/manage/product', ManageProduct::class)->name('admin.manage.product');
 Route::get('/admin/manage/transaction', ManageTransaction::class)->name('admin.manage.transaction');

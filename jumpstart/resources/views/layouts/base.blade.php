@@ -23,5 +23,6 @@
       </footer>
 
   @livewireScripts
+
 </body>
 </html>
