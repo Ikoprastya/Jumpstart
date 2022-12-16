@@ -1,12 +1,13 @@
 <div>
     <section class="bg-gray-50 dark:bg-gray-900  ">
-        <div class="px-6 lg:px-8 bg-image bg-gray-100 shadow-[0px_30px_10px_20px_rgba(0,0,0,0.3)] z-[10]" 
+        <div class="px-6 lg:px-8 bg-image bg-gray-100 shadow-[0px_30px_10px_20px_rgba(0,0,0,0.3)] z-[10]"
             style="
                 background-image: url('/images/sky.jpg');
-                position: static; 
+                position: static;
                 height: 150px;
-            ">          
+            ">
         </div>
+
         <div class="bg-white h-72 "></div>
         <div class=" absolute top-96 w-full left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
             <div class="w-full bg-white rounded-xl shadow-2xl dark:border md:mt-0 sm:max-w-xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -14,6 +15,14 @@
                     <h1 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Sign in
                     </h1>
+                    @if (session()->has('error'))
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <strong class="font-bold">{{ session('error') }}</strong>
+                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                            </span>
+                        </div>
+                    @endif
                     <form class="space-y-4 md:space-y-6" wire:submit.prevent="login">
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>

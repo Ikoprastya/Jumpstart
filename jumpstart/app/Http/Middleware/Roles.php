@@ -21,6 +21,6 @@ class Roles
             abort(403);
         }
 
-        return collect($roles)->contains(auth()->user()->roles) ? $next($request) : back();
+        return collect($roles)->contains(auth()->user()->role) ? $next($request) : back();
     }
 }

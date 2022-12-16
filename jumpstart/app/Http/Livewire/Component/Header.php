@@ -18,7 +18,7 @@ class Header extends Component
 
     //   notyf('Logout successful!');
 
-      return redirect()->to('/');
+      return redirect()->route('login');
     }
 
     public function render()

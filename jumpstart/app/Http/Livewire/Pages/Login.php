@@ -17,16 +17,17 @@ class Login extends Component
             'password'  => 'required'
         ]);
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password, 'roles' => 'USER'])) {
+        if (Auth::attempt(['email' => $this->email, 'password' => $this->password, 'role' => 'USER']) || Auth::attempt(['email' => $this->email, 'password' => $this->password, 'role' => 'ADMIN'])) {
             session()->regenerate();
             return redirect()->route('home');
-        } else {
-            session()->flash('error', 'Alamat Email atau Password Anda salah!.');
+        }  else {
+            session()->flash('error', 'Email and password is invalid!');
             return redirect()->route('login');
 
         }
 
     }
+
 
 
 

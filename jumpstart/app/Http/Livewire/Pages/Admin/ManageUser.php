@@ -22,11 +22,11 @@ class ManageUser extends Component
         return redirect()->back();
 
     }
-    
+
 
     public function render()
     {
-        $this->users = User::orderBy('roles')->get( );
+        $this->users = User::orderBy('role')->get( );
         // dd($users);
         return view('livewire.pages.admin.manage-user')->layout('layouts.base', ['title' => 'Jumpstart - Manage User']);
     }

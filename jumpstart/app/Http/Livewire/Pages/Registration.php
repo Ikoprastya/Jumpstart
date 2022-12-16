@@ -25,7 +25,7 @@ class Registration extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password),
-            'roles' => 'USER'
+            'role' => 'USER'
         ]);
 
         if ($user) {
