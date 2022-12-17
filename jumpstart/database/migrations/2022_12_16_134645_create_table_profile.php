@@ -22,6 +22,8 @@ return new class extends Migration
             $table->date('birthday');
             $table->longText('address');
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
