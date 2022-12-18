@@ -14,38 +14,20 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    // public function admins()
-    // {
-    //   return $this->roles()->where('roles', 'ADMIN')->exists();
-    // }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
         'role',
-    ];
+        'profileID'
+        ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function getProfile()
+    {
+        return $this->belongsTo(Profiles::class, 'profileID');
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -56,4 +38,7 @@ class User extends Authenticatable
     //     get: fn ($value) => ['Admin', 'User'][$value],
     //     );
     // }
+
+
+
 }

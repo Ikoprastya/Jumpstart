@@ -3,53 +3,70 @@
 namespace App\Http\Livewire\Pages\User;
 
 use App\Models\Profile;
+use App\Models\Profiles;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class UserProfile extends Component
 {
 
-    public $postId;
-    public $title;
-    public $content;
+    public $phone;
+    public $birthday;
+    public $gender;
+    public $address;
+    public $country;
 
-    public function mount($id)
-    {
-        $profile = Profile::find($id);
-        
-        if($profile) {
-            $this->title    = $profile->title;
-            $this->content  = $profile->content;
-        }
-    }
+    // public function mount($id)
+    // {
+    //     $profile = User::find($id);
+
+    //     if($profile) {
+    //         $this->title    = $profile->title;
+    //         $this->content  = $profile->content;
+    //     }
+    // }
 
     public function update()
     {
+
+        // $profile = User::find(auth()->user()->id);
+
         $this->validate([
-            'title'   => 'required',
-            'content' => 'required',
+            'phone'     => 'required|numeric',
+            'birthday'  => 'required|date',
+            'gender'    => 'required',
+            'address'   => 'required',
+            'country'   => 'required',
         ]);
 
-        if($this->postId) {
+        if(auth()->user()->id) {
 
-            $post = Post::find($this->postId);
-            
-            if($post) {
-                $post->update([
-                    'title'     => $this->title,
-                    'content'   => $this->content
+            $profile = User::find(auth()->user()->id);
+
+            if($profile) {
+                $profile->update([
+                    'phone'       =>  $this->title,
+                    'birthday'    =>  $this->title,
+                    'gender'      =>  $this->title,
+                    'address'     =>  $this->title,
+                    'country'     =>  $this->title,
+
                 ]);
             }
         }
 
         //flash message
-        session()->flash('message', 'Data Berhasil Diupdate.');
+        session()->flash('message', 'Profile has been updated.');
 
         //redirect
-        return redirect()->route('post.index');
+        return redirect()->back();
     }
 
     public function render()
     {
+
+
         return view('livewire.pages.user.user-profile')->layout('layouts.base', ['title' => 'Jumpstart - User Profile']);
     }
 }
