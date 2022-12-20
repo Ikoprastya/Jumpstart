@@ -4,22 +4,19 @@
     </div>
     <div class="px-52 py-10">
         <div class="border-b-2 border-gray-300 font-medium sm:text-2xl ">
-            <h2 class="mb-3">Name Product</h2>
-            <h3 class="mb-3">15 - 03 - 2003</h3>
+            <h2 class="mb-3">{{ $name }}</h2>
+            <h3 class="mb-3">Stock: <span>@amount($amount)</span></h3>
         </div>
         <div class="my-3 font-medium sm:text-2xl">
-            <h3>Rp. <span>10.000</span></h3>
+            <h3>Rp. <span>@money($price)</span></h3>
         </div>
         <div class="sm:text-lg" >
             <div class="flex">
                 <div class="w-[60%]">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias possimus facilis quae quis illum debitis voluptatibus sapiente aliquam, voluptates, dolorum at commodi nesciunt. Excepturi aperiam ad minus harum, libero perferendis?
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias possimus facilis quae quis illum debitis voluptatibus sapiente aliquam, voluptates, dolorum at commodi nesciunt. Excepturi aperiam ad minus harum, libero perferendis?
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias possimus facilis quae quis illum debitis voluptatibus sapiente aliquam, voluptates, dolorum at commodi nesciunt. Excepturi aperiam ad minus harum, libero perferendis?
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias possimus facilis quae quis illum debitis voluptatibus sapiente aliquam, voluptates, dolorum at commodi nesciunt. Excepturi aperiam ad minus harum, libero perferendis?
+                    {{ $description }}
                 </div>
                 <div class="w-[40%] px-10">
-                    <img src="{{ asset('images/product.jpg') }}" alt="product" class=" rounded-xl h-96 w-screen shadow-2xl">
+                    <img src="{{ asset('storage') }}/{{ $poster }}" alt="product" class=" rounded-xl h-96 w-screen shadow-2xl">
                 </div>
             </div>
             <div>

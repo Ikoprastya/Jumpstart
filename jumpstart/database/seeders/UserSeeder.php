@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -23,14 +24,18 @@ class UserSeeder extends Seeder
                     'email' => 'ikoprastyaaaa@gmail.com',
                     'password'  =>  bcrypt('password'),
                     'role'  =>  'ADMIN',
-                    'profileID'  =>  1,
+                    'phone'     => '098137922',
+                    'country'   => 'Indonesia',
+                    'address'   => 'Jl. Mataram Gg Mangga No.5E',
                 ],
                 [
                     'name' => 'user',
                     'email' => 'user@gmail.com',
                     'password'  =>  bcrypt('password'),
-                    'role'  =>  'ADMIN',
-                    'profileID'  =>  2,
+                    'role'  =>  'USER',
+                    'phone'     => null,
+                    'country'   => null,
+                    'address'   => null,
                 ]
             ]);
         } else { echo "\e[31mTable is not empty, therefore NOT "; }

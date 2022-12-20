@@ -20,7 +20,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role');
-            $table->integer('profileID')->references('id')->on('profiles')->onDelete('cascade');
+            $table->string('poster')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('country')->nullable();
+            $table->longText('address')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

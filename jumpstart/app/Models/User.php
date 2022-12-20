@@ -19,13 +19,13 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'profileID'
+        'phone',
+        'country',
+        'address',
+        'poster',
         ];
 
-    public function getProfile()
-    {
-        return $this->belongsTo(Profiles::class, 'profileID');
-    }
+
 
 
     protected $casts = [

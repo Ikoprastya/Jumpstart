@@ -24,16 +24,19 @@ class ManageProduct extends Component
         $this->validate([
             'name'           => 'required',
             'price'          => 'required|numeric',
-            'poster'         => 'required|image|mimes:jpeg,jpg,png,svg|max:1024',
+            'poster'         => 'required|image|mimes:jpeg,jpg,png,svg|max:3000',
             'amount'         => 'required|numeric',
             'description'    => 'required'
 
         ]);
 
+        $file = $this->poster->store('product','public');
+
+
         $product = Product::create([
             'name'         => $this->name,
             'price'        => $this->price,
-            'poster'       => $this->poster,
+            'poster'       => $file,
             'amount'       => $this->amount,
             'description'  => $this->description,
 

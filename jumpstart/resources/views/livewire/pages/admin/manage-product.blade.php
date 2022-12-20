@@ -127,7 +127,7 @@
                                 <thead class="text-xs text-gray-900 uppercase dark:text-gray-400 border-b-2 border-gray-300">
                                     <tr>
                                         <th scope="col" class="py-3 px-6">
-                                            Product Id
+                                            Product
                                         </th>
                                         <th scope="col" class="py-3 px-6">
                                             Product name
@@ -144,31 +144,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if ($products->count() != 0)
 
-                                    @foreach ($products as $product)
+                                        @foreach ($products as $product)
 
-                                        <tr class="bg-white dark:bg-gray-800">
-                                            <td class="py-4 px-6">
-                                                {{ $product->id }}
-                                            </td>
-                                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $product->name }}
-                                            </th>
-                                            <td class="py-4 px-6">
-                                                Rp. <span>{{ $product->price }}</span>
-                                            </td>
-                                            <td class="py-4 px-6 ">
-                                                {{ $product->amount }}
-                                            </td>
-                                            <td class="py-4 px-6 text-green-500 font-semibold flex flex-col">
-                                                <!-- Modal toggle -->
-                                                <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit product</a>
-                                                <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-green-600 dark:text-green-500 hover:underline">Detail product</a>
-                                                <a wire:click.prevent="destroy({{ $product->id }})" type="button" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete product</a>
-                                            </td>
-                                        </tr>
+                                            <tr class="bg-white dark:bg-gray-800">
+                                                <td class="py-4 px-6">
+                                                    <img src="{!! asset('storage') !!}/{!! $product->poster !!}" alt="profile" class="w-auto h-20 " >
+                                                </td>
+                                                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    {{ $product->name }}
+                                                </th>
+                                                <td class="py-4 px-6">
+                                                    Rp. <span>{{ $product->price }}</span>
+                                                </td>
+                                                <td class="py-4 px-6 ">
+                                                    {{ $product->amount }}
+                                                </td>
+                                                <td class="py-4 px-6 text-green-500 font-semibold flex flex-col">
+                                                    <!-- Modal toggle -->
+                                                    <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit product</a>
+                                                    <a href="#" type="button" data-modal-toggle="editUserModal" class="font-medium text-green-600 dark:text-green-500 hover:underline">Detail product</a>
+                                                    <a wire:click.prevent="destroy({{ $product->id }})" type="button" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete product</a>
+                                                </td>
+                                            </tr>
 
-                                    @endforeach
+                                        @endforeach
+
+                                    @else
+                                        <div class="w-full h-16 bg-white rounded-md flex items-center justify-between mb-5">
+                                            <h1 class="font-medium mx-5 text-hitem">There is no product yet :)</h1>
+                                        </div>
+                                    @endif
 
                                 </tbody>
                             </table>

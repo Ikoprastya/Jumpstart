@@ -35,9 +35,13 @@ Route::get('/logout', [Header::class, 'logOut'])->name('logout');
 Route::get('/signup', Registration::class)->name('registration');
 
 Route::get('/product', Product::class)->name('product');
-Route::get('/product/detail', ProductDetail::class)->name('product.detail');
+// Route::get('/product/detail', ProductDetail::class)->name('product.detail');
+Route::get('/product/detail/{id}', ProductDetail::class)->name('product.detail');
 
 Route::get('/user/profile', UserProfile::class)->name('user.profile');
+Route::post('/user/profile/update/{user}', [UserProfile::class, 'update'])->name('user.profile.update');
+Route::post('/user/profile/upload/{user}', [UserProfile::class, 'upload'])->name('user.profile.upload');
+
 Route::get('/user/changepassword', ChangePassword::class)->name('user.changepassword');
 Route::get('/user/detail', UserDetail::class)->name('user.detail');
 Route::get('/user/chart', ChartUser::class)->name('user.chart');
