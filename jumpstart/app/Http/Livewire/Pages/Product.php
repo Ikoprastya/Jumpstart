@@ -44,19 +44,29 @@ class Product extends Component
             $this->productID = ModelsProduct::FirstWhere('id', $id)->id;
             $this->dateNow = Carbon::now()->toDateTimeString();
 
-            // $ourderExstst = auth()->user()->order()->where('productID', $id)->exists();
+            $ourderExstst = auth()->user()->order()->where('productID', $id)->exists();
             // dd($ourderExstst);
 
-            $order = Order::create([
-                'userID'        => $this->userID,
-                'productID'     => $this->productID,
-                'orderDateTime' => $this->dateNow,
-                'orderAmount'   => 0,
-                'orderStatus'   => 'On Chart',
-            ]);
+            if (!$ourderExstst) {
+                
+                $order = Order::create([
+                    'userID'        => $this->userID,
+                    'productID'     => $this->productID,
+                    'orderDateTime' => $this->dateNow,
+                    'orderAmount'   => 0,
+                    'orderStatus'   => 'On Chart',
+                ]);
+    
+                notify()->success('Order have been placed on chart.');
+                return redirect() -> route('user.order', ['id' => $id]);
 
-            notify()->success('Order have been placed on chart.');
-            return redirect() -> route('user.order', ['id' => $id]);
+            } else {
+
+                notify()->warning('The product aalready on chart.');
+                return redirect() -> route('user.order', ['id' => $id]);
+            }
+
+            
         } else {
             notify()->error('Please complate your profile.');
             return redirect() -> route('user.profile');

@@ -41,127 +41,51 @@
                         </div>
                     </div>
                     <div class="p-10 ">
-
-
-                            <div class=" bg-gray-200  w-full border-gray-300  shadow-lg  px-10 py-3 mb-8 ">
-                                <div class="flex items-center">
-                                    <div class="w-[10%] p-2">
-                                        <img src="{{ asset('images/product.jpg') }}" alt="product" class=" rounded-xl h-28 w-auto shadow-2xl ">
-
-                                    </div>
-                                    <div class="w-[60%] font-bold text-lg text-gray-800 ">
-                                        <h1>Name Product</h1>
-                                        <h2>Rp. <span>10.000</span></h2>
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 flex text-center">
-
-                                            <button class="text-3xl w-[25%]" wire:click='plus'>+</button>
-                                            <input type="number" value="" class="w-[50%] text-center rounded-lg " wire:model='chartValue'>
-                                            @if ($chartValue >= 1)
-                                                <button class="text-3xl w-[25%]" wire:click='minus'>-</button>
-                                            @else
-                                                <button class="text-3xl w-[25%]" wire:click='minus' disabled>-</button>
-                                            @endif
-
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 text-end">
-                                        <a href="" class="p-2 font-semibold  text-white add-pro bg-green-600 rounded-md mr-4">Payment</a>
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 text-center">
-                                        <a href="" class="p-2 font-semibold  text-white add-pro bg-red-600 rounded-md mr-4">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class=" bg-gray-200 rounded-lg w-full border-gray-300  shadow-lg  px-10 py-3 mb-8">
-                                <div class="flex items-center">
-                                    <div class="w-[10%] p-2">
-                                        <img src="{{ asset('images/product.jpg') }}" alt="product" class=" rounded-xl h-28 w-auto shadow-2xl ">
-
-                                    </div>
-                                    <div class="w-[60%] font-bold text-lg text-gray-800 ">
-                                        <h1>Name Product</h1>
-                                        <h2>Rp. <span>10.000</span></h2>
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 flex text-center">
-
-                                            <button class="text-3xl w-[25%]" wire:click='plus'>+</button>
-                                            <input type="number" value="" class="w-[50%] text-center rounded-lg " wire:model='chartValue'>
-                                            @if ($chartValue >= 1)
-                                                <button class="text-3xl w-[25%]" wire:click='minus'>-</button>
-                                            @else
-                                                <button class="text-3xl w-[25%]" wire:click='minus' disabled>-</button>
-                                            @endif
-
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 text-end">
-                                        <a href="" class="p-2 font-semibold  text-white add-pro bg-green-600 rounded-md mr-4">Payment</a>
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 text-center">
-                                        <a href="" class="p-2 font-semibold  text-white add-pro bg-red-600 rounded-md mr-4">Delete</a>
+                        
+                        @if ($orders ->count() != 0)
+                                @foreach ($orders as $order)
+                                <div class=" bg-gray-200  w-full border-gray-300  shadow-lg  px-10 py-3 mb-8 ">
+                                    <div class="flex items-center">
+                                        <div class="w-[10%] p-2">
+                                            <img src="{{ asset('images/product.jpg') }}" alt="product" class=" rounded-xl h-28 w-auto shadow-2xl ">
+    
+                                        </div>
+                                        <div class="w-[60%] font-bold text-lg text-gray-800 ">
+                                            <h1>{{ $order->products->name}}</h1>
+                                            <h2>Rp. <span>10.000</span></h2>
+                                        </div>
+                                        <div class="w-[10%] font-bold text-lg text-gray-800 flex text-center">
+    
+                                                <button class="text-3xl w-[25%]" wire:click='plus'>+</button>
+                                                <input type="number" value="" class="w-[50%] text-center rounded-lg " wire:model='chartValue'>
+                                                @if ($chartValue >= 1)
+                                                    <button class="text-3xl w-[25%]" wire:click='minus'>-</button>
+                                                @else
+                                                    <button class="text-3xl w-[25%]" wire:click='minus' disabled>-</button>
+                                                @endif
+    
+                                        </div>
+                                        <div class="w-[10%] font-bold text-lg text-gray-800 text-end">
+                                            <a href="" class="p-2 font-semibold  text-white add-pro bg-green-600 rounded-md mr-4">Payment</a>
+                                        </div>
+                                        <div class="w-[10%] font-bold text-lg text-gray-800 text-center">
+                                            <a href="" class="p-2 font-semibold  text-white add-pro bg-red-600 rounded-md mr-4">Delete</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                @endforeach
 
-                            <div class=" bg-gray-200 rounded-lg w-full border-gray-300  shadow-lg  px-10 py-3 mb-8">
-                                <div class="flex items-center">
-                                    <div class="w-[10%] p-2">
-                                        <img src="{{ asset('images/product.jpg') }}" alt="product" class=" rounded-xl h-28 w-auto shadow-2xl ">
 
-                                    </div>
-                                    <div class="w-[60%] font-bold text-lg text-gray-800 ">
-                                        <h1>Name Product</h1>
-                                        <h2>Rp. <span>10.000</span></h2>
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 flex text-center">
+                            @else
 
-                                            <button class="text-3xl w-[25%]" wire:click='plus'>+</button>
-                                            <input type="number" value="" class="w-[50%] text-center rounded-lg " wire:model='chartValue'>
-                                            @if ($chartValue >= 1)
-                                                <button class="text-3xl w-[25%]" wire:click='minus'>-</button>
-                                            @else
-                                                <button class="text-3xl w-[25%]" wire:click='minus' disabled>-</button>
-                                            @endif
-
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 text-end">
-                                        <a href="" class="p-2 font-semibold  text-white add-pro bg-green-600 rounded-md mr-4">Payment</a>
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 text-center">
-                                        <a href="" class="p-2 font-semibold  text-white add-pro bg-red-600 rounded-md mr-4">Delete</a>
-                                    </div>
+                                <div class="w-full h-16 bg-white rounded-md flex items-center justify-between mb-5">
+                                    <h1 class="font-medium mx-5 text-hitem">There is no product on chart :)</h1>
                                 </div>
-                            </div>
 
-                            <div class=" bg-gray-200 rounded-lg w-full border-gray-300  shadow-lg  px-10 py-3 mb-8">
-                                <div class="flex items-center">
-                                    <div class="w-[10%] p-2">
-                                        <img src="{{ asset('images/product.jpg') }}" alt="product" class=" rounded-xl h-28 w-auto shadow-2xl ">
+                            @endif
 
-                                    </div>
-                                    <div class="w-[60%] font-bold text-lg text-gray-800 ">
-                                        <h1>Name Product</h1>
-                                        <h2>Rp. <span>10.000</span></h2>
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 flex text-center">
+                            
 
-                                            <button class="text-3xl w-[25%]" wire:click='plus'>+</button>
-                                            <input type="number" value="" class="w-[50%] text-center rounded-lg " wire:model='chartValue'>
-                                            @if ($chartValue >= 1)
-                                                <button class="text-3xl w-[25%]" wire:click='minus'>-</button>
-                                            @else
-                                                <button class="text-3xl w-[25%]" wire:click='minus' disabled>-</button>
-                                            @endif
-
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 text-end">
-                                        <a href="" class="p-2 font-semibold  text-white add-pro bg-green-600 rounded-md mr-4">Payment</a>
-                                    </div>
-                                    <div class="w-[10%] font-bold text-lg text-gray-800 text-center">
-                                        <a href="" class="p-2 font-semibold  text-white add-pro bg-red-600 rounded-md mr-4">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
 
                     </div>
                 </div>
