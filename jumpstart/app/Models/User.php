@@ -25,7 +25,9 @@ class User extends Authenticatable
         'poster',
         ];
 
-
+    public function order(){
+        return $this->hasMany(Order::class, 'userID', 'id');
+    }
 
 
     protected $casts = [

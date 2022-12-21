@@ -45,6 +45,8 @@ Route::post('/user/profile/upload/{user}', [UserProfile::class, 'upload'])->name
 Route::get('/user/changepassword', ChangePassword::class)->name('user.changepassword');
 Route::get('/user/detail', UserDetail::class)->name('user.detail');
 Route::get('/user/chart', ChartUser::class)->name('user.chart');
+Route::get('/user/chart/{id}', ChartUser::class)->name('user.order');
+
 
 Route::get('/order/detail', OrderDetail::class)->name('order.detail');
 Route::get('/order/success', SuccessOrder::class)->name('order.seccess');
