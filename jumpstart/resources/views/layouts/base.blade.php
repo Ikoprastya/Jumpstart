@@ -11,20 +11,20 @@
   @livewireStyles
 </head>
 <body>
-      <header>
-        @livewire('component.header')
-      </header>
-      <x:notify-messages />
+    <header>
+    @livewire('component.header')
+    </header>
 
-      <main>
+    <main>
         {{ $slot }}
-      </main>
+    </main>
 
     <footer class="text-center lg:text-left bg-gray-800 text-white mt-36">
         @livewire('component.footer')
     </footer>
 
     @livewireScripts
+    <x:notify-messages />
     @notifyJs
 </body>
 </html>

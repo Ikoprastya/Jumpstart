@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Pages\User;
 
 use App\Models\Order;
+use App\Models\Product;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Blade;
 use Livewire\Component;
 
 class ChartUser extends Component
@@ -16,41 +18,45 @@ class ChartUser extends Component
 
 
 
-    public function plus(){
-        $this->chartValue++ ;
+    public function plus($id){
+
+        $amount = Order::where('id', $id)->first();
+
+        $amount->orderAmount++;
+        $amount->save();
+
     }
 
-    public function minus(){
-        $this->chartValue-- ;
+    public function minus($id){
+        $amount = Order::where('id', $id)->first();
+
+        $amount->orderAmount--;
+        $amount->save();
     }
 
-    // public function mount()
-    // {
-    //   $this->productID = \Route::current()->parameter('id');
-    //   $this->userID = auth()->user()->userID;
-    //   $this->dateNow = Carbon::now()->toDateTimeString();
-    // }
+    public function boot()
+    {
+        Blade::directive('money', function ($amount) {
+        return "<?php echo number_format($amount, 2); ?>";
+        });
 
-    // public function createOrder()
-    // {
+        Blade::directive('amount', function ($amount) {
+            return "<?php echo number_format($amount); ?>";
+        });
+    }
 
-    //     $order = Order::create([
-    //         'userID'        => $this->userID,
-    //         'productID'     => $this->productID,
-    //         'orderAmount'   => $this->chartValue,
-    //         'orderDateTime' => $this->dateNow,
-    //         'orderStatus'   => 'On Chart',
-    //     ]);
 
-    //     notify()->success('Order have been placed successfully.');
-    //     return redirect()->route('mealStatus', ['orderID' => $order->orderID]);
-    // }
+    public function checkOut($id)
+    {
+
+        return redirect()->route('order.detail', ['id' => $id]);
+    }
 
 
     public function render()
     {
 
-        // $order = Order::all();
+
         $this->orders = Order::where('userID', auth()->user()->id)->get();
         return view('livewire.pages.user.chart-user')->layout('layouts.base', ['title' => 'Jumpstart - Chart User']);
     }

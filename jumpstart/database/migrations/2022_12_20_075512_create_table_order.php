@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer("orderAmount");
             $table->dateTime("orderDateTime");
             $table->longText("orderNote")->nullable($value = true);
+            $table->integer('shipmentID')->constrained('shipment', 'id')->onDelete('cascade')->nullable($value = true);
+            $table->integer('paymentID')->constrained('payment', 'id')->onDelete('cascade')->nullable($value = true);
             $table->string("orderStatus");
             $table->timestamps();
         });

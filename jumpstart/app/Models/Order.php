@@ -17,6 +17,23 @@ class Order extends Model
         return $this->belongsTo(Product::class, 'id', 'productID');
     }
 
+    public function getShipment(){
+        return $this->belongsTo(Shipment::class, 'shipmentID');
+    }
+
+    public function getPayment(){
+        return $this->belongsTo(Payment::class, 'paymentID');
+    }
+
+    public function getProduct()
+    {
+        return $this->belongsTo(Product::class, 'productID');
+    }
+
+    public function getUser()
+    {
+        return $this->belongsTo(User::class, 'userID');
+    }
 
     protected $fillable = [
         'userID',
@@ -24,6 +41,8 @@ class Order extends Model
         'orderAmount',
         'orderDateTime',
         'orderNote',
+        'shipmentID',
+        'paymentID',
         'orderStatus',
       ];
 }

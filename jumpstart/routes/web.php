@@ -48,7 +48,7 @@ Route::get('/user/chart', ChartUser::class)->name('user.chart');
 Route::get('/user/chart/{id}', ChartUser::class)->name('user.order');
 
 
-Route::get('/order/detail', OrderDetail::class)->name('order.detail');
+Route::get('/order/detail/{id}', OrderDetail::class)->name('order.detail');
 Route::get('/order/success', SuccessOrder::class)->name('order.seccess');
 
 Route::get('/admin/manage/user', ManageUser::class)->name('admin.manage.user');

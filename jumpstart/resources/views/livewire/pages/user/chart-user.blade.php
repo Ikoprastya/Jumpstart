@@ -41,32 +41,43 @@
                         </div>
                     </div>
                     <div class="p-10 ">
-                        
+
                         @if ($orders ->count() != 0)
                                 @foreach ($orders as $order)
                                 <div class=" bg-gray-200  w-full border-gray-300  shadow-lg  px-10 py-3 mb-8 ">
                                     <div class="flex items-center">
                                         <div class="w-[10%] p-2">
-                                            <img src="{{ asset('images/product.jpg') }}" alt="product" class=" rounded-xl h-28 w-auto shadow-2xl ">
-    
+                                            <img src="{{ asset('storage') }}/{{ $order->getProduct->poster }}" alt="product" class=" rounded-xl h-28 w-auto shadow-2xl ">
+
                                         </div>
                                         <div class="w-[60%] font-bold text-lg text-gray-800 ">
-                                            <h1>{{ $order->products->name}}</h1>
-                                            <h2>Rp. <span>10.000</span></h2>
+                                            <h1>{{ $order->getProduct->name }}</h1>
+                                            <h2>Rp. <span>@money($order->getProduct->price * $order->orderAmount) </span></h2>
                                         </div>
                                         <div class="w-[10%] font-bold text-lg text-gray-800 flex text-center">
-    
-                                                <button class="text-3xl w-[25%]" wire:click='plus'>+</button>
-                                                <input type="number" value="" class="w-[50%] text-center rounded-lg " wire:model='chartValue'>
-                                                @if ($chartValue >= 1)
-                                                    <button class="text-3xl w-[25%]" wire:click='minus'>-</button>
+                                                @if ($order->orderAmount <= $order->getProduct->amount)
+                                                    <button class="text-3xl w-[25%]" wire:click='plus({{ $order->id }})'>+</button>
+
                                                 @else
-                                                    <button class="text-3xl w-[25%]" wire:click='minus' disabled>-</button>
+                                                    <button class="text-3xl w-[25%]"  disabled>+</button>
+
                                                 @endif
-    
+                                                <input type="number"  class="w-[50%] text-center rounded-lg " name="amount" value="{{ $order->orderAmount }}" readonly>
+                                                @if ($order->orderAmount >= 1)
+                                                    <button class="text-3xl w-[25%]" wire:click='minus({{ $order->id }})'>-</button>
+                                                @else
+                                                    <button class="text-3xl w-[25%]"  disabled>-</button>
+                                                @endif
+
                                         </div>
-                                        <div class="w-[10%] font-bold text-lg text-gray-800 text-end">
-                                            <a href="" class="p-2 font-semibold  text-white add-pro bg-green-600 rounded-md mr-4">Payment</a>
+                                        <div class="w-[10%] font-bold text-md text-gray-800 text-end">
+                                            @if ($order->orderAmount >= 1)
+                                                <a  href="#" wire:click.prevent="checkOut({{ $order->id }})" class="p-2 font-semibold  text-white add-pro bg-green-600 rounded-md mr-4 " >Check Out</a>
+
+                                            @else
+                                                <button  class="p-2 font-semibold  text-white add-pro bg-green-600 rounded-md mr-4" >Check Out</button>
+
+                                            @endif
                                         </div>
                                         <div class="w-[10%] font-bold text-lg text-gray-800 text-center">
                                             <a href="" class="p-2 font-semibold  text-white add-pro bg-red-600 rounded-md mr-4">Delete</a>
@@ -84,7 +95,7 @@
 
                             @endif
 
-                            
+
 
 
                     </div>
