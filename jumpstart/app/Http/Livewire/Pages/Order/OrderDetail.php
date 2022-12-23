@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Shipment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class OrderDetail extends Component
@@ -18,8 +19,8 @@ class OrderDetail extends Component
     public $goSend, $jne, $personalCourier;
     public $cod, $card;
     public $order, $user;
+    public $orderNumberID;
 
-    public $styleClick = "border-solid border-2 border-green-400 h-[100px] w-auto flex flex-col items-center justify-center text-md font-bold text-green-400 dark:text-white bg-green-100";
 
     public function mount()
     {
@@ -69,12 +70,34 @@ class OrderDetail extends Component
     {
 
         $order_id = Order::FirstWhere('id', $this->orderID);
+
+        $orderAmount     = $order_id->orderAmount;
+        $orderPrice      = $order_id->getProduct->price * $orderAmount;
+        $orderShipment   = $order_id->getShipment->price;
+        $orderTotal      = $orderShipment + $orderPrice;
+        // dd($orderTotal);
+
+        $this->orderNumberID = $order_id->orderNumberID = Str::random(5);
+
+        $id_product = Order::where('id', $this->orderID)->first()->getProduct->id;
+        $amount = Order::where('id', $this->orderID)->first()->getProduct->amount;
+
+        $saveAmount = $amount - $orderAmount;
+
+        Product::where('id', $id_product)->update([
+            'amount' => $saveAmount
+        ]);
+
         $order_id -> update([
-            'orderNote'  => $this->orderNote,
+            'orderNote'         => $this->orderNote,
+            'paymentHistory'    => $orderTotal,
+            'orderStatus'       => "Need Verify",
+            'orderNumberID'     => $this->orderNumberID,
 
         ]);
 
-        return redirect()->route('order.seccess');
+
+        return redirect()->route('order.seccess', ['id' => $this->orderID]);
     }
 
 

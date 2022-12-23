@@ -15,6 +15,9 @@ class ChartUser extends Component
     public $productID, $userID;
     public $dateNow;
     public $orders;
+    public $checkNull;
+    public $orderHistory;
+
 
 
 
@@ -45,19 +48,44 @@ class ChartUser extends Component
         });
     }
 
-
     public function checkOut($id)
     {
 
         return redirect()->route('order.detail', ['id' => $id]);
     }
 
+    public function destroy($id){
+        $order = Order::find($id);
+
+        if ($id) {
+            $order->delete();
+        }
+
+        return redirect()->back();
+
+    }
+
+    public function updateStatus($id){
+        $order = Order::find($id);
+
+        if ($id) {
+            $order->update([
+                'orderStatus' => "Received",
+            ]);
+        }
+
+        return redirect()->back();
+
+    }
+
+
 
     public function render()
     {
 
+        $this->orders = auth()->user()->order()->where('orderNumberID', null)->get();
+        $this->orderHistory = auth()->user()->order()->where('orderNumberID', '<>', '', 'and')->get();
 
-        $this->orders = Order::where('userID', auth()->user()->id)->get();
         return view('livewire.pages.user.chart-user')->layout('layouts.base', ['title' => 'Jumpstart - Chart User']);
     }
 }

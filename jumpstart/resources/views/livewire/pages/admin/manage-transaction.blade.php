@@ -48,100 +48,59 @@
                                             Product name
                                         </th>
                                         <th scope="col" class="py-3 px-6">
-                                            Price
+                                            Price/Amount
                                         </th>
                                         <th scope="col" class="py-3 px-6">
                                             Date
                                         </th>
                                         <th scope="col" class="py-3 px-6">
-                                            Amount
+                                            User
                                         </th>
                                         <th scope="col" class="py-3 px-6">
-                                            User
+                                            Status
+                                        </th>
+                                        <th scope="col" class="py-3 px-6">
+                                            Note
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td class="py-4 px-6">
-                                            1
-                                        </td>
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>10.000</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            15-03-2003
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            10
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            Juki
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td class="py-4 px-6">
-                                            1
-                                        </td>
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>10.000</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            15-03-2003
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            10
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            Juki
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td class="py-4 px-6">
-                                            1
-                                        </td>
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>10.000</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            15-03-2003
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            10
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            Juki
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <td class="py-4 px-6">
-                                            1
-                                        </td>
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>10.000</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            15-03-2003
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            10
-                                        </td>
-                                        <td class="py-4 px-6 ">
-                                            Juki
-                                        </td>
-                                    </tr>
+                                    @foreach ($transaction as $item)
+                                        <tr class="bg-white dark:bg-gray-800">
+                                                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    {{ $item->orderNumberID }}
+                                                </th>
+                                                <td class="py-4 px-6">
+                                                    {{ $item->getProduct->name }}
+                                                </td>
+                                                <td class="py-4 px-6">
+                                                    <span>Rp. @money( $item->paymentHistory ) /</span>
+                                                    <span>@amount( $item->orderAmount )</span>
+                                                </td>
+                                                <td class="py-4 px-6">
+                                                    {{ $item->orderDateTime }}
+                                                </td>
+                                                <td class="py-4 px-6 ">
+                                                    {{ $item->getUser->name }}
+                                                </td>
+                                                <td class="py-4 px-6 ">
+                                                    {{ $item->orderStatus }}
+                                                    @if ($item->orderStatus == "Need Verify")
+                                                        <button wire:click='updateStatus({{ $item->id }})' class="p-1 text-white bg-green-600 rounded-md">VERIFY?</button>
+                                                    @else
+
+
+                                                        <button wire:click='updateStatus({{ $item->id }})' class="p-1 text-white bg-green-600 rounded-md" hidden>Verify?</button>
+
+                                                    @endif
+                                                </td>
+                                                <td class="py-4 px-6 ">
+                                                    {{ $item->orderNote }}
+                                                </td>
+
+                                            </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>

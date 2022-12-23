@@ -45,20 +45,31 @@ class Product extends Component
             $this->dateNow = Carbon::now()->toDateTimeString();
 
             $ourderExstst = auth()->user()->order()->where('productID', $id)->exists();
-            // dd($ourderExstst);
+            $ourderNull = auth()->user()->order()->where('orderNumberID', null)->exists();
 
-            if (!$ourderExstst) {
-                
-                $order = Order::create([
-                    'userID'        => $this->userID,
-                    'productID'     => $this->productID,
-                    'orderDateTime' => $this->dateNow,
-                    'orderAmount'   => 0,
-                    'orderStatus'   => 'On Chart',
-                ]);
-    
-                notify()->success('Order have been placed on chart.');
+            // dd(!$ourderNull);
+            // dd();
+
+            if ($ourderExstst || !$ourderExstst) {
+
+                if (!$ourderNull || $ourderNull) {
+                    $order = Order::create([
+                        'userID'        => $this->userID,
+                        'productID'     => $this->productID,
+                        'orderDateTime' => $this->dateNow,
+                        'orderAmount'   => 0,
+                        'orderStatus'   => 'On Chart',
+                    ]);
+
+                    notify()->success('Order have been placed on chart.');
+                    return redirect() -> route('user.order', ['id' => $id]);
+                }
+
+
+
+                notify()->warning('The product aalready on chart2.');
                 return redirect() -> route('user.order', ['id' => $id]);
+
 
             } else {
 
@@ -66,7 +77,7 @@ class Product extends Component
                 return redirect() -> route('user.order', ['id' => $id]);
             }
 
-            
+
         } else {
             notify()->error('Please complate your profile.');
             return redirect() -> route('user.profile');

@@ -49,10 +49,10 @@ Route::get('/user/chart/{id}', ChartUser::class)->name('user.order');
 
 
 Route::get('/order/detail/{id}', OrderDetail::class)->name('order.detail');
-Route::get('/order/success', SuccessOrder::class)->name('order.seccess');
+Route::get('/order/success/{id}', SuccessOrder::class)->name('order.seccess');
 
-Route::get('/admin/manage/user', ManageUser::class)->name('admin.manage.user');
-Route::get('/admin/manage/product', ManageProduct::class)->name('admin.manage.product');
-Route::get('/admin/manage/transaction', ManageTransaction::class)->name('admin.manage.transaction');
+Route::get('/admin/manage/user', ManageUser::class)->name('admin.manage.user')->middleware('roles:ADMIN');
+Route::get('/admin/manage/product', ManageProduct::class)->name('admin.manage.product')->middleware('roles:ADMIN');
+Route::get('/admin/manage/transaction', ManageTransaction::class)->name('admin.manage.transaction')->middleware('roles:ADMIN');
 
 

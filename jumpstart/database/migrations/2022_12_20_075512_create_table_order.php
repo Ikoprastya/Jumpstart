@@ -22,6 +22,8 @@ return new class extends Migration
             $table->longText("orderNote")->nullable($value = true);
             $table->integer('shipmentID')->constrained('shipment', 'id')->onDelete('cascade')->nullable($value = true);
             $table->integer('paymentID')->constrained('payment', 'id')->onDelete('cascade')->nullable($value = true);
+            $table->string("paymentHistory")->nullable($value = true);
+            $table->string("orderNumberID")->nullable();
             $table->string("orderStatus");
             $table->timestamps();
         });

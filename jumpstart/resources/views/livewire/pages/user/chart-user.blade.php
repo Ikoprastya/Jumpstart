@@ -43,6 +43,8 @@
                     <div class="p-10 ">
 
                         @if ($orders ->count() != 0)
+
+
                                 @foreach ($orders as $order)
                                 <div class=" bg-gray-200  w-full border-gray-300  shadow-lg  px-10 py-3 mb-8 ">
                                     <div class="flex items-center">
@@ -55,7 +57,7 @@
                                             <h2>Rp. <span>@money($order->getProduct->price * $order->orderAmount) </span></h2>
                                         </div>
                                         <div class="w-[10%] font-bold text-lg text-gray-800 flex text-center">
-                                                @if ($order->orderAmount <= $order->getProduct->amount)
+                                                @if ($order->orderAmount < $order->getProduct->amount)
                                                     <button class="text-3xl w-[25%]" wire:click='plus({{ $order->id }})'>+</button>
 
                                                 @else
@@ -80,11 +82,12 @@
                                             @endif
                                         </div>
                                         <div class="w-[10%] font-bold text-lg text-gray-800 text-center">
-                                            <a href="" class="p-2 font-semibold  text-white add-pro bg-red-600 rounded-md mr-4">Delete</a>
+                                            <a href="" wire:click.prevent='destroy({{ $order->id }})' class="p-2 font-semibold  text-white add-pro bg-red-600 rounded-md mr-4">Delete</a>
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
+
 
 
                             @else
@@ -115,62 +118,64 @@
                                 <thead class="text-xs text-gray-900 uppercase dark:text-gray-400 border-b-2 border-gray-300">
                                     <tr>
                                         <th scope="col" class="py-3 px-6">
+                                            Order ID
+                                        </th>
+                                        <th scope="col" class="py-3 px-6">
                                             Product name
                                         </th>
                                         <th scope="col" class="py-3 px-6">
                                             Date
                                         </th>
                                         <th scope="col" class="py-3 px-6">
-                                            Amount
+                                            Payment/Amount
                                         </th>
                                         <th scope="col" class="py-3 px-6">
-                                            Status
+                                            status
                                         </th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            15 market 2002
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>20.000</span>
-                                        </td>
-                                        <td class="py-4 px-6 text-green-500 font-semibold">
-                                            success
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            15 market 2002
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>20.000</span>
-                                        </td>
-                                        <td class="py-4 px-6 text-green-500 font-semibold">
-                                            success
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="py-4 px-6">
-                                            15 market 2002
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            Rp. <span>20.000</span>
-                                        </td>
-                                        <td class="py-4 px-6 text-green-500 font-semibold">
-                                            success
-                                        </td>
-                                    </tr>
+                                    @foreach ($orderHistory as $item)
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $item->orderNumberID }}
+                                            </th>
+                                            <td class="py-4 px-6">
+                                                {{ $item->getProduct->name }}
+                                            </td>
+                                            <td class="py-4 px-6">
+                                                {{ $item->orderDateTime }}
+                                            </td>
+                                            <td class="py-4 px-6">
+                                                <span>Rp. @money( $item->paymentHistory ) /</span>
+                                                <span>@amount( $item->orderAmount )</span>
+                                            </td>
+                                            <td class="
+                                                @if ($item->orderStatus == "Received")
+                                                        text-green-500
+                                                @else
+                                                        text-orange-500
+                                                @endif
+                                                        py-4 px-6  font-semibold">
+
+                                                {{ $item->orderStatus }}
+
+                                                @if ($item->orderStatus == "Need Verify")
+                                                    by Admin
+                                                @endif
+
+                                                @if ($item->orderStatus != "Being delivered")
+                                                    <button wire:click='updateStatus({{ $item->id }})' class="p-1 text-white bg-green-600 rounded-md" hidden>Received?</button>
+                                                @else
+                                                    <button wire:click='updateStatus({{ $item->id }})' class="p-1 text-white bg-green-600 rounded-md">Received?</button>
+
+                                                @endif
+                                            </td>
+                                        </tr>
+
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>

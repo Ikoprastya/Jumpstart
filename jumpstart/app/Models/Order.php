@@ -43,6 +43,8 @@ class Order extends Model
         'orderNote',
         'shipmentID',
         'paymentID',
+        'paymentHistory',
+        'orderNumberID',
         'orderStatus',
       ];
 }

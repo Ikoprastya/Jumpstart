@@ -42,7 +42,7 @@
                                     <div wire:click='selectShipment({{ $goSend->id }})'
                                         class="
                                             @if ($order->shipmentID == 1)
-                                                {{ $styleClick }}
+                                                border-solid border-2 border-green-400 h-[100px] text-green-400 dark:text-white bg-green-100
                                             @endif
                                                 border-solid border-2 border-orange-400 h-[100px] w-auto flex flex-col items-center justify-center text-md font-bold text-orange-400 dark:text-white bg-orange-100">
                                         <span> {{ $goSend->name  }} </span>&nbsp
@@ -52,7 +52,7 @@
                                     <div wire:click='selectShipment({{ $jne->id }})'
                                         class="
                                             @if ($order->shipmentID == 2)
-                                                {{ $styleClick }}
+                                                border-solid border-2 border-green-400 h-[100px] text-green-400 dark:text-white bg-green-100
                                             @endif
                                                 border-solid border-2 border-orange-400 h-[100px] w-auto flex flex-col items-center justify-center text-md font-bold text-orange-400 dark:text-white bg-orange-100">
                                         <span> {{ $jne->name  }} </span>&nbsp
@@ -62,7 +62,7 @@
                                     <div wire:click='selectShipment({{ $personalCourier->id }})'
                                         class="
                                             @if ($order->shipmentID == 3)
-                                                {{ $styleClick }}
+                                                border-solid border-2 border-green-400 h-[100px] text-green-400 dark:text-white bg-green-100
                                             @endif
                                                 border-solid border-2 border-orange-400 h-[100px] w-auto flex flex-col items-center justify-center text-md font-bold text-orange-400 dark:text-white bg-orange-100">
                                         <span> {{ $personalCourier->name  }} </span>&nbsp
@@ -81,7 +81,7 @@
                                 <div wire:click='selectPayment({{ $cod->id }})'
                                     class="
                                         @if ($order->paymentID == 1)
-                                            {{ $styleClick }}
+                                            border-solid border-2 border-green-400 h-[100px] text-green-400 dark:text-white bg-green-100
                                         @endif
                                             border-solid border-2 border-orange-400 h-[100px] w-auto flex flex-col items-center justify-center text-md font-bold text-orange-400 dark:text-white bg-orange-100">
                                     <span> {{ $cod->name  }} </span>
@@ -90,7 +90,7 @@
                                 <div wire:click='selectPayment({{ $card->id }})'
                                     class="
                                         @if ($order->paymentID == 2)
-                                            {{ $styleClick }}
+                                            border-solid border-2 border-green-400 h-[100px] text-green-400 dark:text-white bg-green-100
                                         @endif
                                             border-solid border-2 border-orange-400 h-[100px] w-auto flex flex-col items-center justify-center text-md font-bold text-orange-400 dark:text-white bg-orange-100">
                                     <span> {{ $card->name  }} </span>
@@ -110,13 +110,17 @@
                                 <div class="mb-3 w-full  text-sm font-medium border-b-2 border-gray-300 mr-64 pb-4">
                                     <label for="delivery" class="block  text-lg font-medium text-gray-900 dark:text-white">Delivery Destination</label>
                                     <div class="text-green-500">
-                                        <span> {{ $order->getShipment->estimate }} by {{ $order->getShipment->name }} </span>
+                                        @if ($order->shipmentID != null)
+                                            <span> {{ $order->getShipment->estimate }} by {{ $order->getShipment->name }} </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="mb-3 w-full text-sm font-medium  mr-64 pb-4">
                                     <label for="payment" class="block  text-lg font-medium text-gray-900 dark:text-white">Payment method</label>
                                     <div class="text-green-500">
-                                        <span> {{ $order->getPayment->name }} </span>
+                                        @if ($order->paymentID != null)
+                                            <span> {{ $order->getPayment->name }} </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -130,10 +134,12 @@
                                 </div>
                                 <div class=" w-full text-sm font-medium ">
                                     <div class="flex  w-full justify-between text-gray-900 ">
+                                        @if ($order->shipmentID != null)
                                         <label>
                                             <span class="font-extrabold "> {{ $order->getShipment->name }} </span>Shipment
                                         </label>
                                             <span class="text-end "> Rp. @money($order->getShipment->price) </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +147,9 @@
                                 <div class=" text-lg font-semibold mb-3">
                                     <div class="flex text-gray-900 ">
                                         <label for="total" class="block w-[50%]  text-3xl font-extrabold text-orange-400 dark:text-white ">Total</label>
-                                        <span class="text-end w-[50%] text-xl font-extrabold">Rp. @money($order->getShipment->price * $order->orderAmount + $order->getProduct->price)</span>
+                                        @if ($order->shipmentID != null)
+                                            <span class="text-end w-[50%] text-xl font-extrabold">Rp. @money($order->getShipment->price + $order->orderAmount * $order->getProduct->price)</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +157,7 @@
                                 @if ($order->paymentID == 1)
                                     <button type="submit" class="bg-gray-800 text-white my-10 py-2 px-20 rounded-md w-full ">Cash on Delivery</button>
                                 @else
-                                    <a href="{{ url('/user') }}" class="bg-gray-800 text-white my-10 py-2 px-20 rounded-md w-full ">Card Payment</a>
+                                    <a href="#" class="bg-gray-800 text-white my-10 py-2 px-20 rounded-md w-full ">Card Payment</a>
                                 @endif
                             </div>
                         </div>
