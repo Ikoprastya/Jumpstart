@@ -1,14 +1,14 @@
 <div>
-    <div class="relative px-6 lg:px-8 bg-image" 
+    <div class="relative px-6 lg:px-8 bg-image"
         style="
             background-image: url('/images/hero-benner.jpg');
-            position: static; 
+            position: static;
         ">
         <div class="mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40">
             <div>
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                 <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-4xl text-white">Welcome To Our Store!</h1>
-                
+
             </div>
             <div>
                 <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl text-white">Choose an item for your needs</h1>
@@ -69,44 +69,26 @@
             <h1 class="text-4xl font-bold tracking-tight sm:text-center sm:text-6xl text-gray-800 uppercase mb-6">Our Product</h1>
 
             <div class="grid grid-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
-                <div class="shadow-lg pb-4 bg-white rounded-xl mt-6">
-                <div class="flex justify-center md:justify-center mb-3 ">
-                    <img src="{{ asset('images/product.jpg') }}" alt="product" class="h-72 w-full rounded-t-xl">
-                </div>
-                <h6 class="text-grey-800 font-bold text-lg flex justify-center md:justify-start mx-4">
-                    Name Product
-                </h6>
-                <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
-                </div>
+                @foreach ($products as $item)
+                    <div class="shadow-lg pb-4 bg-white rounded-xl mt-6">
+                        <div class="flex justify-center md:justify-center mb-3 ">
+                            <img src="{{ asset('storage') }}/{{ $item->poster }}" alt="product" class="h-72 w-full rounded-t-xl">
+                        </div>
+                        <h6 class="text-grey-800 font-bold text-lg flex justify-center md:justify-start mx-4">
+                            {{ $item->name }}
+                        </h6>
+                        <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span>@money($item->price)</span></p>
+                        <p class="flex justify-center md:justify-start mx-4 mb-4">Stock: <span>@amount($item->amount)</span></p>
 
-                <div class="shadow-lg pb-4 bg-white rounded-xl mt-6">
-                <div class="flex justify-center md:justify-center mb-3 ">
-                    <img src="{{ asset('images/product.jpg') }}" alt="product" class="h-72 w-full rounded-t-xl">
-                </div>
-                <h6 class="text-grey-800 font-bold text-lg flex justify-center md:justify-start mx-4">
-                    Name Product
-                </h6>
-                <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
-                </div>
+                    </div>
 
-                <div class="shadow-lg pb-4 bg-white rounded-xl mt-6">
-                <div class="flex justify-center md:justify-center mb-3 ">
-                    <img src="{{ asset('images/product.jpg') }}" alt="product" class="h-72 w-full rounded-t-xl">
-                </div>
-                <h6 class="text-grey-800 font-bold text-lg flex justify-center md:justify-start mx-4">
-                    Name Product
-                </h6>
-                <p class="flex justify-center md:justify-start mx-4 mb-4">Rp. <span >10.000</span></p>
-                <a href="" class="bg-gray-800 text-white mx-4 p-2 rounded-md">Add tp chart</a>
-                </div>
+                @endforeach
 
             </div>
 
-            
-            
+
+
             </div>
-            <a href="" class="bg-gray-800 text-white mt-10 py-2 px-20 rounded-md ">Show more</a>
+            <a href="{{ route('product') }}" class="bg-gray-800 text-white mt-10 py-2 px-20 rounded-md ">Show more</a>
         </div>
 </div>

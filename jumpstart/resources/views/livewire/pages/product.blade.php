@@ -26,8 +26,13 @@
                                 <p class="flex justify-center md:justify-start mx-4 ">Rp. <span class="mx-3">@money($product->price)</span></p>
                                 <p class="flex justify-center md:justify-start mx-4 ">Stock: <span class="mx-3">@amount($product->amount)</span></p>
                                 <div class="flex w-full justify-end">
-                                    <a href="#" wire:click.prevent="orderProduct({{ $product->id }})"
-                                        class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+                                    @if (auth()->user())
+                                        <a href="#" wire:click.prevent="orderProduct({{ $product->id }})"
+                                            class="bg-gray-800 text-white mx-4 p-2 rounded-md ">Add to chart</a>
+
+                                    @else
+
+                                    @endif
 
                                 </div>
                             </div>

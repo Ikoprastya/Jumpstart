@@ -2,16 +2,22 @@
 
 namespace App\Http\Livewire\Pages\User;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class ChangePassword extends Component
 {
 
-    // public function resetPassword(Request $request, $id)
+    // public function changePassword($id)
     // {
-    //     $validated = $request->validate([
-    //         'email_address' =>  'required|email',
-    //         'new_password'  =>  'required|min:5'
+    //     $validated = User::validate([
+    //         'current_password' =>  ['required', function ($attribute, $value, $fail) {
+    //             if (!Hash::check($value, auth()->user()->password)) {
+    //                 $fail('your currrent passworid is incorect.');
+    //             }
+    //         }],
+    //         'new_password'  =>  'required|min:5|confirmed'
     //     ]);
 
     //     $user_id = User::findOrFail($id);
