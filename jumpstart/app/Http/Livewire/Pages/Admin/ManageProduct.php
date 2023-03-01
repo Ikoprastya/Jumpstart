@@ -18,9 +18,12 @@ class ManageProduct extends Component
     public $amount;
     public $description;
 
+    public $productID;
 
 
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
         $this->validate([
             'name'           => 'required',
             'price'          => 'required|numeric',
@@ -30,7 +33,7 @@ class ManageProduct extends Component
 
         ]);
 
-        $file = $this->poster->store('product','public');
+        $file = $this->poster->store('product', 'public');
 
 
         $product = Product::create([
@@ -44,13 +47,19 @@ class ManageProduct extends Component
 
         if ($product) {
             session()->flash('success', 'Success adding new product');
-            $this->reset();
+            $this->resetInput();
             return redirect()->to('/admin/manage/product/#data');
         }
-
     }
 
-    public function destroy($id){
+    public function showDetails($id)
+    {
+        $products = Product::where('id', $id)->first();
+        return redirect()->route('product.detail', ['id' => $id])->with(['products' => $products]);
+    }
+
+    public function destroy($id)
+    {
         $product = Product::find($id);
 
         if ($id) {
@@ -60,12 +69,21 @@ class ManageProduct extends Component
         session()->flash('message', "Data has been deleted.");
 
         return redirect()->back();
-
     }
+
+    private function resetInput()
+    {
+        $this->name = null;
+        $this->price = null;
+        $this->poster = null;
+        $this->amount = null;
+        $this->description = null;
+    }
+
 
     public function render()
     {
-        $this->products = Product::orderBy('id')->get( );
+        $this->products = Product::orderBy('id')->get();
         return view('livewire.pages.admin.manage-product')->layout('layouts.base', ['title' => 'Jumpstart - Manage Product']);
     }
 }

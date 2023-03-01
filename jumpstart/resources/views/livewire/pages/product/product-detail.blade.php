@@ -21,7 +21,13 @@
             </div>
             <div>
                 <a href="{{ url('/product') }}" class="bg-gray-800 text-white py-2 px-20 rounded-md">Back</a>
+                <button wire:click="edit({{ $productID }})">
+                    <a  class="bg-blue-800 text-white py-2 px-20 rounded-md">Edit</a>
+                </button>
             </div>
         </div>
     </div>
+    @if($isOpen)
+        @include('livewire.pages.product.product-update')
+    @endif
 </div>

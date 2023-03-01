@@ -12,6 +12,7 @@ class Product extends Component
 {
 
     Public $productID, $userID, $dateNow;
+    public $search = '';
 
     public function boot()
     {
@@ -87,7 +88,7 @@ class Product extends Component
 
     public function render()
     {
-        $this->products = ModelsProduct::orderBy('id')->get();
+        $this->products = ModelsProduct::orderBy('id')->where('name', 'like', '%'.$this->search.'%')->get();
         return view('livewire.pages.product')->layout('layouts.base', ['title' => 'Jumpstart - Product']);
     }
 }

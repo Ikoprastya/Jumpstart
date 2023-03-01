@@ -10,6 +10,7 @@ use App\Http\Livewire\Pages\Order\OrderDetail;
 use App\Http\Livewire\Pages\Order\SuccessOrder;
 use App\Http\Livewire\Pages\Product;
 use App\Http\Livewire\Pages\Product\ProductDetail;
+use App\Http\Livewire\Pages\Product\ProductUpdate;
 use App\Http\Livewire\Pages\Registration;
 use App\Http\Livewire\Pages\User\ChangePassword;
 use App\Http\Livewire\Pages\User\ChartUser;
@@ -35,7 +36,7 @@ Route::get('/logout', [Header::class, 'logOut'])->name('logout');
 Route::get('/signup', Registration::class)->name('registration');
 
 Route::get('/product', Product::class)->name('product');
-// Route::get('/product/detail', ProductDetail::class)->name('product.detail');
+Route::get('/product/update/{id}', ProductUpdate::class)->name('product.update');
 Route::get('/product/detail/{id}', ProductDetail::class)->name('product.detail');
 
 Route::get('/user/profile', UserProfile::class)->name('user.profile');
